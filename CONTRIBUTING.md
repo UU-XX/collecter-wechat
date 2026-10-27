@@ -23,6 +23,6 @@ python -X utf8 -B -m unittest discover -s python/local-collector -p 'test_*.py' 
 python -X utf8 -B -m unittest discover -s tests -v
 ```
 
-CLI 打包使用 `python -X utf8 tools/build_release.py --version 0.1.0`，构建前安装 `requirements-build.txt`。已有发行目录不会覆盖。Windows CI 自动运行源码与 Skill 测试。
+CLI 打包使用 `python -X utf8 tools/build_release.py --version 0.1.0`，构建前安装 `requirements-build.txt`。已有发行目录不会覆盖。可选的 Windows CI 模板位于 `tools/github-actions-test.yml`，需要时可自行启用。
 
 功能建议请说明真实使用场景。月度年度汇总、模型分析断点续跑等未完成事项，不应在文档或发行说明中提前写成已支持。
