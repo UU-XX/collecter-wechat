@@ -1,0 +1,19 @@
+name: Tests
+on: [push, pull_request]
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r python/requirements.txt
+      - name: 源码与Skill合成测试
+        shell: pwsh
+        run: |
+          $env:LOCALAPPDATA = Join-Path $env:RUNNER_TEMP 'collecter-local'
+          $env:APPDATA = Join-Path $env:RUNNER_TEMP 'collecter-roaming'
+          python -X utf8 -B -m unittest discover -s python/local-collector -p 'test_*.py' -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -X utf8 -B -m unittest discover -s tests -v

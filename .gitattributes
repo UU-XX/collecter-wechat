@@ -1,0 +1,6 @@
+# 固定读取组件与源码清单依赖原始字节，禁止自动转换行尾
+* -text
+*.ico binary
+*.mp4 binary
+*.db binary
+*.bin binary
